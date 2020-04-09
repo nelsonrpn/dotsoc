@@ -4,7 +4,7 @@ DotSoc é um software para simulação de uma sociedade de pontos com comportame
 
 NOTAS SOBRE ARQUITETURA:
 
-Não tenho referencia para arquitetura para redes neurais, portanto implementei uma própria que inicialmente pode não 	ser a mais eficiente, mas facilita o entendimento e a leitura do código.
+Não tenho referencia para arquitetura de redes neurais, portanto implementei uma própria que inicialmente pode não 	ser a mais eficiente, mas facilita o entendimento e a leitura do código.
   
 Brain -> Contém a totalidade dos Layers de Neurons do ator
   
