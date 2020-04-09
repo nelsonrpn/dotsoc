@@ -28,7 +28,7 @@ public class Neuron {
 		charged = true;
 	}
 	
-	//Will only be activated by the layer ahead, that is, never will be called by the input layer
+	//Ativado apenas pelo layer à frente
 	public void activation(double bias) throws NotHiddenLayerException {
 		if(backSynapsis == null) {
 			throw new NotHiddenLayerException();
