@@ -15,6 +15,9 @@ public class Synapse {
 		weight = randomBetween(-1000,1000);
 	}
 	
+	//"Pulsa" a entrada do inputNeuron multiplicada pelo peso para a saida, para posteriormente ser
+	//somada ao "pulso" de todos as sinapses conectadas a um neuron da camada a frente
+	//para por fim ser aplicada a função de ativação (sigmoid)
 	public void pulse(double input) {
 		output = input * weight;
 	}
@@ -24,8 +27,6 @@ public class Synapse {
 		return min + (rand.nextDouble() * (max - min));
 	}
 	
-	
-	//GETTERS _ SETTERS
 	public Neuron getInputNeuron() {
 		return inputNeuron;
 	}

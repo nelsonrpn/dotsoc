@@ -13,7 +13,7 @@ public class Layer {
 	private Layer layerBehind;
 	private double bias;
 	private boolean alreadyCreatedSynapsis = false;
-	private boolean activated = false;
+	private boolean charged = false;
 
 	public Layer(double bias) {
 		this.bias = bias;
@@ -39,23 +39,19 @@ public class Layer {
 				nextNeuron.addBackSynapse(syn);
 			}
 		}
-
 		alreadyCreatedSynapsis = true;
 	}
 
 	public void feedFoward() throws NotHiddenLayerException {
-		if (!activated) {
-			activateNeurons();
+		if (!charged) {
+			pulseNeurons();
 		}
 
 		try {
-			
 			for (Neuron nextNeuron : layerAhead.neurons) {
-				nextNeuron.inputPhase(bias);
+				nextNeuron.activation(bias);
 			}
-			
 		} catch (NotHiddenLayerException ex) {
-			
 			System.out.println(ex.getMessage());
 			
 			for(Neuron nextNeuron : layerAhead.neurons) {
@@ -63,19 +59,16 @@ public class Layer {
 			}
 			
 			System.out.println("Next layer reseted and feedfoward operation stopped");
-			
 			throw ex;
 		}
-
-		activated = false;
+		charged = false;
 	}
 
-	private void activateNeurons() {
+	private void pulseNeurons() {
 		for (Neuron neuron : neurons) {
-			neuron.activate();
+			neuron.pulseFoward();
 		}
-
-		activated = true;
+		charged = true;
 	}
 
 	private boolean validateSynapsisCreation() {
@@ -88,7 +81,6 @@ public class Layer {
 	public void addNeuron(Neuron neuron) {
 		neurons.add(neuron);
 	}
-	
 	public Collection<Neuron> getNeurons() {
 		return neurons;
 	}

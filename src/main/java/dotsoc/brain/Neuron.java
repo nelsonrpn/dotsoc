@@ -11,7 +11,7 @@ public class Neuron {
 	private double input;
 	private List<Synapse> backSynapsis;
 	private List<Synapse> frontSynapsis;
-	private boolean activated = false;
+	private boolean charged = false;
 
 	public Neuron(boolean inputLayer) {
 		if (!inputLayer) {
@@ -20,22 +20,22 @@ public class Neuron {
 		frontSynapsis = new ArrayList<>();
 	}
 
-	public void activate() {
+	public void pulseFoward() {
 		for (Synapse syn : frontSynapsis) {
 			syn.pulse(input);
 		}
 		
-		activated = true;
+		charged = true;
 	}
 	
 	//Will only be activated by the layer ahead, that is, never will be called by the input layer
-	public void inputPhase(double bias) throws NotHiddenLayerException {
+	public void activation(double bias) throws NotHiddenLayerException {
 		if(backSynapsis == null) {
 			throw new NotHiddenLayerException();
 		}
 		
-		if(!activated) {
-			activate();
+		if(!charged) {
+			pulseFoward();
 		}
 		
 		double sum = 0d;
@@ -46,7 +46,7 @@ public class Neuron {
 		
 		input = sigmoid(sum + bias);
 		
-		activated = false;
+		charged = false;
 	}
 
 	private double sigmoid(double x) {

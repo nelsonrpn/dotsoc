@@ -59,13 +59,9 @@ public class Brain {
 		Neuron n31 = new Neuron(false);
 		Neuron n32 = new Neuron(false);
 		Neuron n33 = new Neuron(false);
-		Layer input;
-		Layer hidden;
-		Layer output;
-		
-		input = new Layer(1);
-		hidden = new Layer(1);
-		output = new Layer(1);
+		Layer input = new Layer(1); 
+		Layer hidden = new Layer(1);
+		Layer output = new Layer(1);
 
 		input.setAhead(hidden);
 		hidden.setBehind(input);
@@ -87,19 +83,13 @@ public class Brain {
 		n13.setInput(1.43);
 		
 		Brain brain = new Brain();
-		List<Layer> brainLayers = brain.layers;
-		brainLayers.add(input);
-		brainLayers.add(hidden);
-		brainLayers.add(output);
+		brain.layers.add(input);
+		brain.layers.add(hidden);
+		brain.layers.add(output);
 		
 		brain.constructBrain();
 		brain.feedFowardNetwork();
 		brain.printNet();
 		
 	}
-	
-	
-	
-	
-	
 }
