@@ -1,5 +1,6 @@
 # dotsoc
 Simulação de uma "sociedade" de pontos com comportamentos regidos por redes neurais
+
 ERRATA: NA VERDADE NÂO SIMULA NADA POIS EU ABANDONEI ESSE PROJETO ASSIM COMO 100% DE TODOS OS OUTROS QUE JÁ COMECEI
 
 NOTAS SOBRE ARQUITETURA:
